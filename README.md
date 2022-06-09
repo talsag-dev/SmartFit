@@ -11,6 +11,19 @@ Rignt now I've accomplished with basic CRUD operations such as adding one's prof
 ![1650996540865.png](image/README/Login.png)
 
 
+## Run:✅
+
+> cd app && docker-compose --env-file ./.env  up -d --build
+
+and then [http://localhost:3004/]()
+
+Please first sign up and then you will be authenticated to do rest operations
+
+
+if you wish to run the app in another port on host server side or docker port you can do it by changing 
+the ports number in .env file and run the same command as before
+
+
 ## To Be Added:✅
 
 * the ML model
