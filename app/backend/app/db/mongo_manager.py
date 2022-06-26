@@ -1,7 +1,3 @@
-from motor.motor_asyncio import (
-    AsyncIOMotorClient as MotorClient,
-)
-import motor.core
 import asyncio
 import logging
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -13,6 +9,7 @@ class MongoManager:
 
     async def connect_to_database(self, path: str, db_name: str):
         logging.info("Connecting to MongoDB.")
+        print(path)
         self.client = AsyncIOMotorClient(path)
         self.client.get_io_loop = asyncio.get_running_loop
         self.db = self.client[db_name]

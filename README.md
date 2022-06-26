@@ -27,4 +27,20 @@ the ports number in .env file and run the same command as before
 ## To Be Added:✅
 
 * the ML model
+* remove proxy from package.json , handle build react 
+
+## Notes: ✒️
+
+
+if you want to init with diffrent user for database please change MONGO_INITDB_USER and MONGO_INITDB_PWD to 
+whatever you like such as : MONGO_INITDB_USER=Moshe MONGO_INITDB_PWD=1234
+
+please if you want to change any port do that through the .env file 
+by changing DATABASE_HOST you need to change the name of the service "database" in docker-compose 
+recommended : DO NOT TOUCH
+also , MONGO_INITDB_DATABASE please dont touch right now the backend is couted to SmartFit
+  
+
+
+
 

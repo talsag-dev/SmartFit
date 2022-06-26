@@ -27,17 +27,17 @@ def get_spesific_food(query:str) -> JSONResponse:
 
 
 
-@router.post("/new", tags=["Food"], description='When one user wants to add a spesific food which isnt in the database')
-async def post_one_food(food: Food = Body(...)) -> JSONResponse:
-    food_data = jsonable_encoder(food)
-    new_food_data = await db.get_collection("food").insert_one(food_data)
-    created_food = await db.get_collection("food").find_one(
-        {"_id": new_food_data.inserted_id}
-    )
-    if created_food is not None:
-        return JSONResponse(status_code=status.HTTP_201_CREATED, content=created_food)
-    raise HTTPException(
-        status_code=404, detail=f"Food {food.id} couldnt be created")
+# @router.post("/new", tags=["Food"], description='When one user wants to add a spesific food which isnt in the database')
+# async def post_one_food(food: Food = Body(...)) -> JSONResponse:
+#     food_data = jsonable_encoder(food)
+#     new_food_data = await db.get_collection("food").insert_one(food_data)
+#     created_food = await db.get_collection("food").find_one(
+#         {"_id": new_food_data.inserted_id}
+#     )
+#     if created_food is not None:
+#         return JSONResponse(status_code=status.HTTP_201_CREATED, content=created_food)
+#     raise HTTPException(
+#         status_code=404, detail=f"Food {food.id} couldnt be created")
 
 
 # @router.delete("/api/api_v1/nutrition/food/{id}", tags=["Food"], description='delete food')

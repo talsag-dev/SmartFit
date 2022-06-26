@@ -26,7 +26,7 @@ app.add_middleware(CORSMiddleware , allow_origins=['*'],
 
 @app.on_event("startup")
 async def startup_db_client():
-    await db.connect_to_database(path=settings.DB_URL, db_name=settings.DB_NAME)
+    await db.connect_to_database(path=settings.DATABASE_URL, db_name=settings.DB_NAME)
 
 
 @app.on_event("shutdown")

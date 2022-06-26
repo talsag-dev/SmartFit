@@ -1,6 +1,22 @@
-version: '3.8'
+version: '3.9'
 
 services:
+  database:
+    image: mongo:latest
+    ports:
+      - ${DB_PORT}:${DOCKER_DB_PORT}
+    volumes: 
+      - ./db/data:/data/db
+      # - ./db/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - ./db/initdb.d/:/docker-entrypoint-initdb.d/
+    container_name: SmartFit-DB
+    env_file:
+      - .env
+    networks:
+      - SmartFit-network
+
+
+
   backend:
     build: ./backend
     env_file:
@@ -8,6 +24,11 @@ services:
     ports:
       - ${SERVER_PORT}:${DOCKER_SERVER_PORT}
     container_name: SmartFit-backend
+    networks:
+      - SmartFit-network
+    depends_on: 
+      - database
+
   forntend:
     build: 
       args:
@@ -23,12 +44,13 @@ services:
     container_name: SmartFit-frontend
     stdin_open: true
     tty: true
+    networks:
+      - SmartFit-network
 
+
+networks:
+  SmartFit-network:
+    driver: bridge
 
   
 
-  
-##finished frontend too , to run evreything just type : docker-compose up -d --build and if you want
-##to change something do that through the .env file 
-
-##note to self , remove proxy from package.json 
