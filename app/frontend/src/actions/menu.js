@@ -126,7 +126,7 @@ export const addFood = (formData) => async (dispatch) => {
 
 export const searchFood = (query) => async (dispatch) => {
   try {
-    const res = await api.post(`/nutrition/food/?query=${query}`, {});
+    const res = await api.post(`/nutrition/food?query=${query}`, {});
 
     dispatch({
       type: GET_FOOD,

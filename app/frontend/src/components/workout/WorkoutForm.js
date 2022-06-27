@@ -83,7 +83,6 @@ const WorkoutForm = ({
                 ...formData,
                 number_of_days_per_week: e.value,
               });
-              console.log(formData)
             }}
             theme={(theme) => ({
               ...theme,
