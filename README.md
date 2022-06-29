@@ -8,10 +8,6 @@ A user can use this software to get into fitness by making a profile, diet, work
 
 Rignt now I've accomplished with basic CRUD operations such as adding one's profile , authenticating , adding an exrecise and etc
 
-<!-- ![1650996540865.png](image/README/Login.png) -->
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/P4hjVKQh85I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 
 ### Click on the image to watch video 
 [![IMAGE_ALT](image/README/Login.png)](https://www.youtube.com/watch?v=P4hjVKQh85I)
