@@ -28,12 +28,15 @@ class DatabaseSettings(BaseModel):
     """
     Database settings for app
     """
+    DEV_MODE: bool = os.getenv("DEV_MODE")
     DATABASE_USER: str = os.getenv("MONGO_INITDB_USER")
     DATABASE_PASSWORD: str = os.getenv("MONGO_INITDB_PWD")
     DATABASE_HOST: str = os.getenv("DATABASE_HOST")
     DATABASE_PORT: str = os.getenv("DOCKER_DB_PORT")
     DB_NAME: str = os.getenv("MONGO_INITDB_DATABASE")
-    DATABASE_URL = "mongodb://{user}:{password}@{host}:{port}/{db}".format(user=DATABASE_USER, password=DATABASE_PASSWORD, host=DATABASE_HOST, port=DATABASE_PORT,db=DB_NAME)
+    DATABASE_URL_IN_PROD:str = "mongodb://{user}:{password}@{host}:{port}/{db}".format(user=DATABASE_USER, password=DATABASE_PASSWORD, host=DATABASE_HOST, port=DATABASE_PORT,db=DB_NAME)
+    DATABASE_URL_IN_DEV :str = "mongodb+srv://Talsag:288944@cluster0.n8bbj.mongodb.net/?retryWrites=true&w=majority"
+    DATABASE_URL = DATABASE_URL_IN_DEV if DEV_MODE else DATABASE_URL_IN_PROD
 
     EMAIL_TEST_USER:str = 'example@exa.com'
     PASSWORD_TEST_USER:str = 'example'

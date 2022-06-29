@@ -158,7 +158,7 @@ export const searchFood = (query) => async (dispatch) => {
 export const deleteFood = (id) => async (dispatch) => {
   try {
     const res = await api.delete(`/menu/delete_food/?food_id=${id}`);
-
+    console.log(res)
     dispatch({
       type: UPDATE_MENU,
       payload: res.data,

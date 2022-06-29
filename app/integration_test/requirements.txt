@@ -1,0 +1,9 @@
+webdriver-manager
+selenium
+pytest
+
+
+
+## must have Chrome installed also , please run pip install --no-cache-dir --upgrade -r requirements.txt
+
+## run pytest test_one.py

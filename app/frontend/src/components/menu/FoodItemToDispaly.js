@@ -10,9 +10,9 @@ const FoodItemToDispaly = ({ deleteFood, id, portion, food }) => {
 
   const handleDeleteClick = (e) => {
     e.preventDefault();
+    console.log(id)
     deleteFood(id);
   };
-
 
   return (
     <div className='exercise-grid bg-light'>

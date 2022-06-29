@@ -13,7 +13,7 @@ const FoodItem = ({ addFoodItem,food }) => {
 
 	useEffect(() => {
     setOption(mapToOpttions[0]);
-  }, [food, mapToOpttions]);
+  }, [food]);
 
 	
   return (

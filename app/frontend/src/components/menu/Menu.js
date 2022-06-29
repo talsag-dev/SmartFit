@@ -3,12 +3,14 @@ import {  useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Navigate } from "react-router-dom";
 import { connect } from "react-redux";
+import FoodItemToDispaly from "./FoodItemToDispaly";
+
 import {
   getCurrentMenu,
   createMenu,
   deleteMenu,
 } from "../../actions/menu";
-import FoodItemToDispaly from "./FoodItemToDispaly";
+
 
 const Menu = ({
   createMenu,
@@ -106,15 +108,17 @@ const Menu = ({
                 Calories from Protein:{handleTotalProtien(menu)}
               </h2>
               <>
-                {menu.foods.map((food) => (
+                {menu.foods.map((food,index) => (
                   <>
                     <FoodItemToDispaly
+                      key={index}
                       id={food._id}
                       food={food}
                       portion={food.user_input_grams}
                     />
                   </>
-                ))}{" "}
+                ))}
+                {" "}
                 <button className='btn btn-primary' onClick={handleUpdateClick}>
                   Update Menu
                 </button>
@@ -124,7 +128,7 @@ const Menu = ({
               </>
             </Fragment>
           ) : (
-            (<Navigate to='/create-menu' />)
+            <Navigate to='/create-menu' />
           )}
         </>
       ) : (

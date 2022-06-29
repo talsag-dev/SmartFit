@@ -35,8 +35,7 @@ export const loadUser = () => async (dispatch) => {
 // Register User
 export const register = (formData) => async (dispatch) => {
   try {
-    const res = await api.post("signup", formData);
-    
+    const res = await api.post("signup/", formData);
     dispatch({
       type: REGISTER_SUCCESS,
       payload: res.data,
@@ -45,8 +44,7 @@ export const register = (formData) => async (dispatch) => {
 
   } catch (err) {
 
-    const error = err.response.data.detail;
-    dispatch(setAlert(error,'danger'));
+    dispatch(setAlert('User already exist please choose another email adress or login','danger'));
     dispatch({
       type: REGISTER_FAIL,
     });

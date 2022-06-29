@@ -11,10 +11,9 @@ router = APIRouter()
 
 @router.post("/", tags=["Sign up"], description='User Creation')
 async def signup(user: UserCreate = Body(...)) -> JSONResponse:
-    if (userindb := await db.get_collection("users").find_one({"email": user.email})) is not None:
+    if (userindb := await db.get_collection("users").find_one({"email": user.email.lower()})) is not None:
         raise HTTPException(
             status_code=404, detail=f"User {user.email} already exist")
-    print(user)
     userindb = UserInDBBase(
         full_name=user.full_name,email=user.email.lower(), create_date=datetime.now().strftime("%Y-%m-%d %H:%M"),
         password_hash=get_password_hash(user.password))
@@ -22,7 +21,7 @@ async def signup(user: UserCreate = Body(...)) -> JSONResponse:
     await db.get_collection("users").insert_one(jsonable_encoder(userindb))
 
     created_user = await db.get_collection("users").find_one(
-        {"email": user.email}
+        {"email": user.email.lower()}
     )
 
     if created_user is not None:
