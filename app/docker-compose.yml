@@ -5,7 +5,7 @@ services:
     image: mongo:latest
     ports:
       - ${DB_PORT}:${DOCKER_DB_PORT}
-    volumes: 
+    volumes:
       - ./db/data:/data/db
       # - ./db/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
       - ./db/initdb.d/:/docker-entrypoint-initdb.d/
@@ -14,8 +14,6 @@ services:
       - .env
     networks:
       - SmartFit-network
-
-
 
   backend:
     build: ./backend
@@ -26,11 +24,10 @@ services:
     container_name: SmartFit-backend
     networks:
       - SmartFit-network
-    depends_on: 
+    depends_on:
       - database
-
   forntend:
-    build: 
+    build:
       args:
         - SERVER_PORT=${SERVER_PORT}
       context: ./frontend
@@ -47,10 +44,6 @@ services:
     networks:
       - SmartFit-network
 
-
 networks:
   SmartFit-network:
     driver: bridge
-
-  
-
